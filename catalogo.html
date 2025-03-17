@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Tienda de Velas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/script.js"></script>
+
+<body>
+    <header>
+        <h1>Catálogo de Velas</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="carrito.html">Carrito (<span id="contador-carrito">0</span>)</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main class="catalogo">
+        <div class="producto">
+            <img src="imagenes/vela_lavanda.jpg" alt="Vela de Lavanda">
+            <h3>Vela de Lavanda</h3>
+            <p>$10.00</p>
+            <button onclick="agregarAlCarrito('Vela de Lavanda', 10.00)">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+            <img src="imagenes/vela_vainilla.jpg" alt="Vela de Vainilla">
+            <h3>Vela de Vainilla</h3>
+            <p>$12.00</p>
+            <button onclick="agregarAlCarrito('Vela de Vainilla', 12.00)">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+            <img src="imagenes/vela_canela.jpg" alt="Vela de Canela">
+            <h3>Vela de Canela</h3>
+            <p>$11.00</p>
+            <button onclick="agregarAlCarrito('Vela de Canela', 11.00)">Añadir al carrito</button>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Tienda de Velas. Todos los derechos reservados.
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

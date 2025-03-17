@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<script src="js/script.js"></script>
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("📢 Cargando carrito...");
+        mostrarCarrito();
+    });
+</script>
+
+
+<body>
+    <header>
+        <h1>Carrito de Compras</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="carrito.html">Carrito (<span id="contador-carrito">0</span>)</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Productos en tu carrito:</h2>
+        <ul id="lista-carrito"></ul>
+        <p>Total: $<span id="total-carrito">0.00</span></p>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </main>
+    <div class="container">
+        <h2>Tu Carrito de Compras</h2>
+        <div id="carrito-lista"></div>
+        <button onclick="vaciarCarrito()" class="btn">Vaciar Carrito</button>
+        <button onclick="finalizarCompra()" class="btn">Finalizar Compra</button>
+    </div>
+    
+    <footer>
+        &copy; 2025 Tienda de Velas. Todos los derechos reservados.
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
