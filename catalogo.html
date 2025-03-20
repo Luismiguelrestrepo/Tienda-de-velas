@@ -1,12 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Tienda de Velas</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* 🔥 Estilos de la sección de productos */
+        .productos {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(120deg, #ff9800, #ff6f00);
+            color: white;
+        }
+
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .producto {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .producto:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(255, 152, 0, 0.7);
+        }
+
+        .producto img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .producto h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .producto p {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .precio {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffeb3b;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .btn-comprar {
+            background: #ffeb3b;
+            color: #333;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background: #ffca28;
+            transform: scale(1.1);
+        }
+
+        .catalogo {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .producto {
+            width: 250px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .producto h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .producto p {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .producto button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .producto button:hover {
+            background: #e68900;
+        }
+    </style>
 </head>
-<script src="js/script.js"></script>
 
 <body>
     <header>
@@ -14,33 +138,101 @@
         <nav>
             <a href="index.html">Inicio</a>
             <a href="catalogo.html">Catálogo</a>
-            <a href="carrito.html">Carrito (<span id="contador-carrito">0</span>)</a>
+            <a href="compra.html">Carrito (<span id="contador-carrito">0</span>)</a>
             <a href="contacto.html">Contacto</a>
         </nav>
     </header>
+
     <main class="catalogo">
-        <div class="producto">
-            <img src="imagenes/vela_lavanda.jpg" alt="Vela de Lavanda">
-            <h3>Vela de Lavanda</h3>
-            <p>$10.00</p>
-            <button onclick="agregarAlCarrito('Vela de Lavanda', 10.00)">Añadir al carrito</button>
-        </div>
-        <div class="producto">
-            <img src="imagenes/vela_vainilla.jpg" alt="Vela de Vainilla">
-            <h3>Vela de Vainilla</h3>
-            <p>$12.00</p>
-            <button onclick="agregarAlCarrito('Vela de Vainilla', 12.00)">Añadir al carrito</button>
-        </div>
-        <div class="producto">
-            <img src="imagenes/vela_canela.jpg" alt="Vela de Canela">
-            <h3>Vela de Canela</h3>
-            <p>$11.00</p>
-            <button onclick="agregarAlCarrito('Vela de Canela', 11.00)">Añadir al carrito</button>
-        </div>
+        <!-- Sección de Productos -->
+        <section class="productos">
+            <h2>🌟 Nuestras Velas Más Vendidas</h2>
+            <div class="productos-container">
+
+                <!-- Producto 1 -->
+                <div class="producto">
+                    <img src="imagenes/Fresa.jfif" alt="Vela de Fresa">
+                    <h3>Vela de Fresa 🍓</h3>
+                    <p>Un aroma dulce y fresco para tu hogar.</p>
+                    <span class="precio">$12.99</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="producto">
+                    <img src="imagenes/Vainilla.jfif" alt="Vela de Vainilla">
+                    <h3>Vela de Vainilla 🍦</h3>
+                    <p>Relájate con este aroma cálido y envolvente.</p>
+                    <span class="precio">$14.99</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="producto">
+                    <img src="imagenes/Miel.jfif" alt="Vela de Miel">
+                    <h3>Vela de Miel 🍯</h3>
+                    <p>Suavidad y dulzura natural en cada encendido.</p>
+                    <span class="precio">$13.99</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="producto">
+                    <img src="imagenes/Naranja.jfif" alt="Vela de Naranja">
+                    <h3>Vela de Naranja 🍊</h3>
+                    <p>Frescura cítrica para revitalizar tu ambiente.</p>
+                    <span class="precio">$11.99</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="producto">
+                    <img src="/Tienda de velas/imagenes/Lavanda.jpg" alt="Vela de Lavanda">
+                    <h3>Vela de Lavanda 💜</h3>
+                    <p>Relájate con el aroma calmante de lavanda.</p>
+                    <span class="precio">$15.99</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="producto">
+                    <img src="imagenes/Coco.jfif" alt="Vela de Coco">
+                    <h3>Vela de Coco 🥥</h3>
+                    <p>Disfruta un aroma tropical y refrescante.</p>
+                    <span class="precio">$13.49</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="producto">
+                    <img src="/Tienda de velas/imagenes/canela.avif" alt="Vela de Canela">
+                    <h3>Vela de Canela 🍂</h3>
+                    <p>Un aroma especiado perfecto para días fríos.</p>
+                    <span class="precio">$14.49</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="producto">
+                    <img src="imagenes/Menta.jfif" alt="Vela de Menta">
+                    <h3>Vela de Menta 🌿</h3>
+                    <p>Frescura revitalizante para cualquier espacio.</p>
+                    <span class="precio">$12.49</span>
+                    <button class="btn-comprar">🛒 Agregar al Carrito</button>
+                </div>
+
+            </div>
+        </section>
+
+
     </main>
-    <footer>
-        &copy; 2025 Tienda de Velas. Todos los derechos reservados.
-    </footer>
-    <script src="js/script.js"></script>
+
+    <footer>&copy; 2025 Tienda de Velas. Todos los derechos reservados.</footer>
+
+    <!-- La ruta debe ser correcta -->
+    <script type="module" src="/Tienda de velas/js/firebase.js"></script>
+    <script type="module" src="/Tienda de velas/js/script.js"></script>
+
 </body>
+
 </html>

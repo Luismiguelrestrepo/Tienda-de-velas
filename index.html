@@ -3,39 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Velas</title>
+    <title>🔥 Tienda de Velas - Encanto Aromático</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* 🔥 Fondo con degradado elegante */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #ffcc80, #ffab40, #ff8f00);
+            color: white;
+            text-align: center;
+        }
+
+        /* 🔥 Carrusel con efecto de zoom y brillo */
+        .carrusel-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+        }
+
+        .carrusel {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carrusel img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 1s, opacity 1s;
+            opacity: 0.8;
+        }
+
+        /* Efecto de zoom en la imagen activa */
+        .carrusel img.activo {
+            transform: scale(1.05);
+            opacity: 1;
+            border: 4px solid #ff9800;
+            box-shadow: 0px 0px 20px #ff9800;
+        }
+
+        /* 🔥 Botones de navegación llamativos */
+        .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 25px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .carrusel-btn:hover {
+            background: #ff9800;
+            box-shadow: 0px 0px 15px #ff9800;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* 🔥 Indicadores animados */
+        .indicadores {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .indicador {
+            width: 14px;
+            height: 14px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .indicador.activo {
+            background-color: #ff9800;
+            transform: scale(1.5);
+            box-shadow: 0px 0px 10px #ff9800;
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- Encabezado -->
     <header>
-        <h1>Tienda de Velas Aromáticas</h1>
+        <h1>🕯️ Tienda de Velas Aromáticas</h1>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="catalogo.html">Catálogo</a>
             <a href="contacto.html">Contacto</a>
-            <a href="compra.html">Carrito</a>
+            <a href="compra.html">🛒 Carrito (<span id="contador-carrito">0</span>)</a>
         </nav>
     </header>
- 
-    <!-- Sección Hero con Imagen de Fondo -->
+
+    <!-- Sección Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Velas Artesanales para Iluminar tu Hogar</h2>
+            <h2>🌿 Velas Artesanales para Iluminar tu Hogar</h2>
             <p>Aromas relajantes, diseños únicos y la mejor calidad.</p>
-            <a href="catalogo.html" class="btn">Ver Catálogo</a>
+            <a href="catalogo.html" class="btn">🛍️ Ver Catálogo</a>
         </div>
     </section>
-    
+
+    <!-- 🔥 Carrusel con efectos mejorados -->
     <div class="carrusel-container">
         <div class="carrusel">
-            <img src="/Tienda de velas/imagenes/Fresa.jfif" alt="Vela de Lavanda">
-            <img src="/Tienda de velas/imagenes/Vainilla.jfif" alt="Vela de Vainilla">
-            <img src="/Tienda de velas/imagenes/Miel.jfif" alt="Vela de Canela">
+            <img src="imagenes/Fresa.jfif" alt="Vela de Fresa" class="activo">
+            <img src="imagenes/Vainilla.jfif" alt="Vela de Vainilla">
+            <img src="imagenes/Miel.jfif" alt="Vela de Miel">
         </div>
+        <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">❮</button>
+        <button class="carrusel-btn next" onclick="moverCarrusel(1)">❯</button>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="indicadores">
+        <span class="indicador activo" onclick="irAImagen(0)"></span>
+        <span class="indicador" onclick="irAImagen(1)"></span>
+        <span class="indicador" onclick="irAImagen(2)"></span>
+    </div>
 
-    <footer>&copy; 2025 Tienda de Velas. Todos los derechos reservados.</footer>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Tienda de Velas. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para carrito y carrusel -->
+    <script type="module" src="/Tienda de velas/js/script.js"></script>
+    <script>
+        // 🛒 Actualizar contador del carrito al cargar la página
+        document.addEventListener("DOMContentLoaded", function () {
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            document.getElementById("contador-carrito").textContent = carrito.length;
+        });
+
+        // 🎠 Carrusel funcional con efectos
+        let carruselIndex = 0;
+        const carrusel = document.querySelector(".carrusel");
+        const imagenes = document.querySelectorAll(".carrusel img");
+        const indicadores = document.querySelectorAll(".indicador");
+
+        function moverCarrusel(direccion) {
+            carruselIndex = (carruselIndex + direccion + imagenes.length) % imagenes.length;
+            actualizarCarrusel();
+        }
+
+        function irAImagen(index) {
+            carruselIndex = index;
+            actualizarCarrusel();
+        }
+
+        function actualizarCarrusel() {
+            carrusel.style.transform = `translateX(-${carruselIndex * 100}%)`;
+
+            imagenes.forEach((img, i) => {
+                img.classList.toggle("activo", i === carruselIndex);
+            });
+
+            indicadores.forEach((dot, i) => {
+                dot.classList.toggle("activo", i === carruselIndex);
+            });
+        }
+
+        setInterval(() => moverCarrusel(1), 4000);
+    </script>
+
 </body>
 </html>

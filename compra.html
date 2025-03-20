@@ -1,48 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
+    <title>Carrito de Compras | Tienda de Velas</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>/* 🎨 Fuente general */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #f9f3ee, #ffe6d6);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        /* 🌟 Encabezado */
+        header {
+            background: linear-gradient(to right, #ff9671, #f9d423);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        /* 🔗 Menú de navegación */
+        nav {
+            margin-top: 10px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+        
+        nav a.activo {
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* 🛒 Contenedor del carrito */
+        .carrito-container {
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carrito h2 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ff9671;
+        }
+        
+        /* 🛍️ Tabla del carrito */
+        .carrito table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .carrito th, .carrito td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .carrito th {
+            background-color: #ff9671;
+            color: white;
+        }
+        
+        .carrito td {
+            font-size: 16px;
+        }
+        
+        .carrito .vacio {
+            font-style: italic;
+            color: gray;
+        }
+        
+        /* 💰 Total */
+        .total {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+        
+        /* 🛑 Botones */
+        .botones {
+            margin-top: 20px;
+        }
+        
+        .btn {
+            font-size: 16px;
+            border: none;
+            padding: 12px 18px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .btn.vaciar {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        
+        .btn.vaciar:hover {
+            background-color: #cc0000;
+        }
+        
+        .btn.comprar {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn.comprar:hover {
+            background-color: #218838;
+        }
+        
+        /* 📱 Responsivo */
+        @media (max-width: 700px) {
+            .carrito-container {
+                width: 90%;
+                padding: 15px;
+            }
+        
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+        </style>
 </head>
-<script src="js/script.js"></script>
-<script src="js/script.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        console.log("📢 Cargando carrito...");
-        mostrarCarrito();
-    });
-</script>
-
 
 <body>
     <header>
-        <h1>Carrito de Compras</h1>
+        <h1>🛍️ Tu Carrito de Compras</h1>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="catalogo.html">Catálogo</a>
-            <a href="carrito.html">Carrito (<span id="contador-carrito">0</span>)</a>
+            <a href="carrito.html" class="activo" onclick="event.preventDefault();">Carrito (<span id="contador-carrito">0</span>)</a>
             <a href="contacto.html">Contacto</a>
         </nav>
     </header>
+
     <main>
-        <h2>Productos en tu carrito:</h2>
-        <ul id="lista-carrito"></ul>
-        <p>Total: $<span id="total-carrito">0.00</span></p>
-        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
-        <button onclick="finalizarCompra()">Finalizar Compra</button>
+        <section class="carrito-container">
+            <h2>🛒 Productos en tu carrito</h2>
+            <div class="carrito">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-carrito">
+                        <tr>
+                            <td colspan="3" class="vacio">Tu carrito está vacío</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="total">Total: <span id="total-carrito">$0.00</span></p>
+            <div class="botones">
+                <button class="btn vaciar" onclick="vaciarCarrito()">🗑️ Vaciar Carrito</button>
+                <button class="btn comprar" onclick="finalizarCompra()">✅ Finalizar Compra</button>
+            </div>
+        </section>
     </main>
-    <div class="container">
-        <h2>Tu Carrito de Compras</h2>
-        <div id="carrito-lista"></div>
-        <button onclick="vaciarCarrito()" class="btn">Vaciar Carrito</button>
-        <button onclick="finalizarCompra()" class="btn">Finalizar Compra</button>
-    </div>
-    
+
     <footer>
         &copy; 2025 Tienda de Velas. Todos los derechos reservados.
     </footer>
-    <script src="js/script.js"></script>
+
+    <script src="/Tienda de velas/js/script.js" type="module"></script>
+    <script type="module">
+        import { mostrarCarrito, vaciarCarrito, finalizarCompra } from "/Tienda de velas/js/script.js";
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarCarrito();
+        });
+        window.vaciarCarrito = vaciarCarrito;
+        window.finalizarCompra = finalizarCompra;
+    </script>
 </body>
+
 </html>
